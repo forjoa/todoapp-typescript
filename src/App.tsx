@@ -5,7 +5,7 @@ import {
   IconCheck,
   IconTrash,
 } from '@tabler/icons-react'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useEffect } from 'react'
 import { MagicMotion } from 'react-magic-motion'
 
 type Task = {
@@ -17,8 +17,15 @@ type Task = {
 type TaskList = Array<Task>
 
 const App = () => {
-  const [taskList, setTaskList] = useState<TaskList>([])
+  const [taskList, setTaskList] = useState<TaskList>(() => {
+    const storedTaskList = JSON.parse(localStorage.getItem('taskList') || '[]')
+    return storedTaskList
+  })
   const [taskFromInput, setTaskFromInput] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('taskList', JSON.stringify(taskList))
+  }, [taskList])
 
   const addTask = (e: FormEvent): void => {
     e.preventDefault()
