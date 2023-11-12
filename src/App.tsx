@@ -70,7 +70,7 @@ const App = () => {
           gap: '5px',
         }}
       >
-        Add a task here <IconArrowDown color='black' stroke={3} size={30} />
+        ADD A TASK HERE <IconArrowDown color='black' stroke={3} size={30} />
       </h1>
 
       <form
@@ -86,6 +86,7 @@ const App = () => {
           type='text'
           placeholder='New task...'
           autoComplete='off'
+          spellCheck='false'
           required
           value={taskFromInput}
           onChange={(e) => setTaskFromInput(e.target.value)}
@@ -107,7 +108,7 @@ const App = () => {
             border: 'none',
           }}
         >
-          <IconSend stroke={3} size={20} />
+          <IconSend stroke={3} size={25} color='black' />
         </button>
       </form>
 
